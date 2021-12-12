@@ -11,17 +11,22 @@ def write_in_file(x,y):
         fp.write(stroka + '\n')
     fp.close()
 
-
+def show_graph(y):
+    plt.xlabel('t')
+    plt.ylabel('Выходной сигнал Y')
+    plt.title('Переходной процесс САР')
+    plt.plot(y)
+    plt.show()
 
 param = [3.0, -0.4, 0.2, 0.1, 0.05]
 K1 = input('K1 = ')
 K2 = input('K2 = ')
 
 if K1: param[0] = float(K1)
-if K1: param[1] = float(K2)
+if K2: param[1] = float(K2)
 
 
-x = [0] * 5 + [1] * 95 # Входной сигнал – «ступенька»
+x = [0] * 5 + [1] * 1000   # Входной сигнал – «ступенька»
 SAU = SAU(param)
 y = []
 
@@ -32,11 +37,7 @@ for xt in x:
 
 write_in_file(x,y)
 
-plt.xlabel('t')
-plt.ylabel('Выходной сигнал Y')
-plt.title('Переходной процесс САР')
-plt.plot(y)
-plt.show()
+show_graph(y)
 
 
 
